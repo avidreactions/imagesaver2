@@ -13,10 +13,9 @@ def home():
 
 @app.route("/imagesaver", methods=["GET","POST"])
 def imagesaver():
-  if request.method == "POST":
-    print("printing method is post, run get_images", request.method);
-    
-  # grab_images("https://www.ufc.com");
+  # if request.method == "POST":
+  #   print("printing method is post, run get_images", request.method);
+  grab_images("https://www.ufc.com");
   return "<h1>RUNNING IMAGE SAVER</h1>"
 
 if __name__ == "__main__":

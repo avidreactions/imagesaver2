@@ -44,4 +44,4 @@ def grab_images(url):
 
   images = soup.findAll('img');
 
-  download_images(images, "downloads");
+  download_images(images, "../downloads");
