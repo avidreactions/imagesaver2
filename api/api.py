@@ -13,11 +13,9 @@ def page_not_found(e):
 def imagesaver():
   data = request.get_json();
 
-  print("this is data", data["url"]);
-    
-  grab_images(data["url"]);
-  
-  return {200: 'grabbed images'}
+  response = grab_images(data["url"]);
+
+  return { 'data': response }
 
 if __name__ == "__main__":
   app.run(debug=True);

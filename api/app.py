@@ -1,9 +1,11 @@
 import os
+import shutil
 import requests
 from bs4 import *
 
-def download_images(images, folder_name):
+def download_images(images, folder_path):
   count = 0;
+  image_list = [];
   print(f"total {len(images)} have been found!");
 
   if len(images) != 0:
@@ -22,11 +24,12 @@ def download_images(images, folder_name):
           request = str(request, 'utf-8');
 
         except UnicodeDecodeError:
-          with open(f"{folder_name}/images{i+1}.jpg", "wb+") as f:
+          with open(f"{folder_path}/images{i+1}.jpg", "wb+") as f:
             f.write(request);
           with open("downloaded.txt", "a") as w:
             w.write(image_link + "\n");
             w.write("\n");
+          image_list.append(image_link);
 
           count += 1;
       except:
@@ -38,6 +41,8 @@ def download_images(images, folder_name):
     else:
       print(f"Total {count} images downloaded out of {len(images)}");
 
+    return image_list;
+
 def grab_images(url):
   print(f"grabbing images from {url}");
   
@@ -47,4 +52,14 @@ def grab_images(url):
 
   images = soup.findAll('img');
 
-  download_images(images, "../downloads");
+  folder_path = '../downloads'
+  
+  if os.path.exists(folder_path):
+    shutil.rmtree(folder_path);
+  
+  os.makedirs(folder_path);
+
+  response = download_images(images, folder_path);
+
+  return response;
+  
