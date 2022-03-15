@@ -24,6 +24,9 @@ def download_images(images, folder_name):
         except UnicodeDecodeError:
           with open(f"{folder_name}/images{i+1}.jpg", "wb+") as f:
             f.write(request);
+          with open("downloaded.txt", "a") as w:
+            w.write(image_link + "\n");
+            w.write("\n");
 
           count += 1;
       except:
@@ -44,4 +47,4 @@ def grab_images(url):
 
   images = soup.findAll('img');
 
-  download_images(images, "downloads");
+  download_images(images, "../downloads");

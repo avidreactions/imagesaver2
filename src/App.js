@@ -1,20 +1,12 @@
 import React from "react";
-import { Box, TextField, Button } from "@mui/material";
+import Form from "./components/Form";
 
-function App() {
+const App = () => {
   return (
-    <Box
-      component="form"
-      sx={{
-        margin: "3em auto",
-        textAlign: "center",
-      }}
-    >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <br />
-      <Button>Click me</Button>
-    </Box>
+    <div>
+      <Form />
+    </div>
   );
-}
+};
 
 export default App;
