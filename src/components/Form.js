@@ -5,11 +5,20 @@ import {
   Button,
   ImageList,
   ImageListItem,
+  Snackbar,
+  FormControl,
 } from "@mui/material";
+import MuiAlert from "@mui/material/Alert";
+
+const AlertMessage = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Form = () => {
   const [urlInput, setUrlInput] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("success");
 
   const handleClick = async () => {
     const postObj = { url: urlInput };
@@ -24,6 +33,12 @@ const Form = () => {
       .then((response) => response.json())
       .then((data) => {
         setImageUrls(data.data);
+        setSeverity("success");
+        setOpen(true);
+      })
+      .catch((error) => {
+        setSeverity("error");
+        setOpen(true);
       });
   };
   const handleOnChange = (event) => {
@@ -31,13 +46,22 @@ const Form = () => {
     setUrlInput(event.target.value);
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <>
-      <Box
-        component="form"
+      <FormControl
         sx={{
-          margin: "3em auto",
+          margin: "1em auto",
           textAlign: "center",
+          left: "50%",
+          transform: "translate(-50%)",
         }}
       >
         <TextField
@@ -52,13 +76,17 @@ const Form = () => {
           variant="outlined"
           onClick={handleClick}
           sx={{
-            margin: "3em",
+            margin: "1em",
           }}
         >
           Grab Images
         </Button>
-      </Box>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      </FormControl>
+      <ImageList
+        sx={{ width: "50%", height: 700, margin: "0 auto" }}
+        cols={imageUrls.length > 0 ? 3 : 1}
+        rowHeight={164}
+      >
         {imageUrls.length > 0 ? (
           imageUrls.map((image) => (
             <ImageListItem key={image}>
@@ -70,9 +98,20 @@ const Form = () => {
             </ImageListItem>
           ))
         ) : (
-          <></>
+          <Box sx={{ textAlign: "center", margin: " 0 auto" }}>
+            <h1>Sorry, couldn't find anything</h1>
+          </Box>
         )}
       </ImageList>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <AlertMessage
+          onClose={handleClose}
+          severity={severity}
+          sx={{ width: "100%" }}
+        >
+          {severity === "success" ? "Success!" : "There was an error :("}
+        </AlertMessage>
+      </Snackbar>
     </>
   );
 };
