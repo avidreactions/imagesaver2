@@ -60,9 +60,8 @@ const Form = () => {
         sx={{
           margin: "1em auto",
           textAlign: "center",
-        }}
-        onSubmit={(e) => {
-          e.preventDefault();
+          left: "50%",
+          transform: "translate(-50%)",
         }}
       >
         <TextField
@@ -84,7 +83,7 @@ const Form = () => {
         </Button>
       </FormControl>
       <ImageList
-        sx={{ width: "50%", height: 750, margin: "0 auto" }}
+        sx={{ width: "50%", height: 700, margin: "0 auto" }}
         cols={imageUrls.length > 0 ? 3 : 1}
         rowHeight={164}
       >
