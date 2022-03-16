@@ -5,11 +5,18 @@ import {
   Button,
   ImageList,
   ImageListItem,
+  Snackbar,
 } from "@mui/material";
+import MuiAlert from "@mui/material/Alert";
+
+const AlertMessage = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Form = () => {
   const [urlInput, setUrlInput] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
+  const [open, setOpen] = useState(false);
 
   const handleClick = async () => {
     const postObj = { url: urlInput };
@@ -24,11 +31,20 @@ const Form = () => {
       .then((response) => response.json())
       .then((data) => {
         setImageUrls(data.data);
+        setOpen(true);
       });
   };
   const handleOnChange = (event) => {
     event.preventDefault();
     setUrlInput(event.target.value);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -73,6 +89,15 @@ const Form = () => {
           <></>
         )}
       </ImageList>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <AlertMessage
+          onClose={handleClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          This is a success message!
+        </AlertMessage>
+      </Snackbar>
     </>
   );
 };
