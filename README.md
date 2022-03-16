@@ -13,13 +13,13 @@ In the project directory, install react packages:
 In the api directory, install the requirements into a virtualenv or your environment of choice, then run:
 _For best experience, please use pip3_
 
-#### MacOS:
+#### MacOS example:
 
 `source venv/bin/activate`
 
 `pip3 install -r requirements.txt`
 
-#### Windows:
+#### Windows example:
 
 `source venv/scripts/activate`
 
