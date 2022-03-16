@@ -26,6 +26,7 @@ _For best experience, please use pip3_
 `pip3 install -r requirements.txt`
 
 ## Start the local servers
+_Must `cd ..` back into imagesaver2 directory before running npm scripts_
 
 Start the backend:
 
