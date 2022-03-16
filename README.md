@@ -27,14 +27,22 @@ _For best experience, please use pip3_
 
 ## Start the local servers
 
-Start the frontend:
-
-`npm start`
-
 Start the backend:
 
 `npm run start-api`
 
-The application will be live on `http://localhost:3000`. Enter the full url and click the button to grab images. Once the images are retrieved, they will download to the downloads folder and a log will be added to the api folder (`api/downloaded.txt`). A Gallery will be updated with the downloaded photos.
+In a new terminal, start the frontend:
+
+`npm start`
+
+The application will be live on `http://localhost:3000`.
+
+Enter the full url and click the button to grab images. Once the images are retrieved, they will download to the downloads folder and a log will be added to the api folder (`api/downloaded.txt`). A Gallery will be updated with the downloaded photos.
 
 The download folder will create a new folder and overwrite the contents.
+
+Some example websites used to test:
+
+https://stocksnap.io
+https://www.ufc.com
+https://www.google.com - Success case, but 0 files downloaded
