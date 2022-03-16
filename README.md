@@ -43,6 +43,6 @@ The download folder will create a new folder and overwrite the contents.
 
 Some example websites used to test:
 
-https://stocksnap.io
-https://www.ufc.com
-https://www.google.com - Success case, but 0 files downloaded
+- https://stocksnap.io
+- https://www.ufc.com
+- https://www.google.com - Success case, but 0 files downloaded
