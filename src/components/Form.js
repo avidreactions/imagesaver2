@@ -6,6 +6,7 @@ import {
   ImageList,
   ImageListItem,
   Snackbar,
+  FormControl,
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 
@@ -55,11 +56,13 @@ const Form = () => {
 
   return (
     <>
-      <Box
-        component="form"
+      <FormControl
         sx={{
-          margin: "3em auto",
+          margin: "1em auto",
           textAlign: "center",
+        }}
+        onSubmit={(e) => {
+          e.preventDefault();
         }}
       >
         <TextField
@@ -74,14 +77,14 @@ const Form = () => {
           variant="outlined"
           onClick={handleClick}
           sx={{
-            margin: "3em",
+            margin: "1em",
           }}
         >
           Grab Images
         </Button>
-      </Box>
+      </FormControl>
       <ImageList
-        sx={{ width: "100%", height: 450 }}
+        sx={{ width: "50%", height: 750, margin: "0 auto" }}
         cols={imageUrls.length > 0 ? 3 : 1}
         rowHeight={164}
       >
@@ -89,7 +92,7 @@ const Form = () => {
           imageUrls.map((image) => (
             <ImageListItem key={image}>
               <img
-                src={`${image}?w=248&fit=crop&auto=format`}
+                src={`${image}?w=164&h=164&fit=crop&auto=format`}
                 alt="images"
                 loading="lazy"
               />
