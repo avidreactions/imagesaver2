@@ -33,4 +33,4 @@ def test_post_route_failure():
     "url": "http://asdfasdf"
   }
   response = client.post(url, json=mock_request_data);
-  assert response.status_code == 500;
+  assert response.status_code == 400;
