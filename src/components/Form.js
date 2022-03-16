@@ -17,6 +17,7 @@ const Form = () => {
   const [urlInput, setUrlInput] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
   const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("success");
 
   const handleClick = async () => {
     const postObj = { url: urlInput };
@@ -31,6 +32,11 @@ const Form = () => {
       .then((response) => response.json())
       .then((data) => {
         setImageUrls(data.data);
+        setSeverity("success");
+        setOpen(true);
+      })
+      .catch((error) => {
+        setSeverity("error");
         setOpen(true);
       });
   };
@@ -74,28 +80,34 @@ const Form = () => {
           Grab Images
         </Button>
       </Box>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <ImageList
+        sx={{ width: "100%", height: 450 }}
+        cols={imageUrls.length > 0 ? 3 : 1}
+        rowHeight={164}
+      >
         {imageUrls.length > 0 ? (
           imageUrls.map((image) => (
             <ImageListItem key={image}>
               <img
-                src={`${image}?w=164&h=164&fit=crop&auto=format`}
+                src={`${image}?w=248&fit=crop&auto=format`}
                 alt="images"
                 loading="lazy"
               />
             </ImageListItem>
           ))
         ) : (
-          <></>
+          <Box sx={{ textAlign: "center", margin: " 0 auto" }}>
+            <h1>Sorry, couldn't find anything</h1>
+          </Box>
         )}
       </ImageList>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <AlertMessage
           onClose={handleClose}
-          severity="success"
+          severity={severity}
           sx={{ width: "100%" }}
         >
-          This is a success message!
+          {severity === "success" ? "Success!" : "There was an error :("}
         </AlertMessage>
       </Snackbar>
     </>
