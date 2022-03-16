@@ -14,8 +14,12 @@ def imagesaver():
   data = request.get_json();
 
   response = grab_images(data["url"]);
-
-  return { 'data': response }
+  
+  if len(response) > 0:
+    return { 'data': response };
+  
+  if len(response) == 0:
+    return 'Could not download images', 418;
 
 if __name__ == "__main__":
   app.run(debug=True);
