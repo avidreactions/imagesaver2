@@ -48,8 +48,8 @@ const Gallery = () => {
         spacing={3}
       >
         {imageUrls.length > 0 ? (
-          imageUrls.map((image) => (
-            <Grid item xs={4}>
+          imageUrls.map((image, index) => (
+            <Grid item xs={4} key={`image${index}`}>
               <img
                 className="image-tiles margin-auto"
                 src={`${image}?w=164&h=164&fit=crop&auto=format`}
