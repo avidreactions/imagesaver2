@@ -11,8 +11,12 @@ _Please run npm install as new packages and updates may have been added_
 
 `npm install`
 
-In the api directory, install the requirements into a virtualenv or your environment of choice, then run:
+In the api directory, install the requirements into a virtualenv or your environment of choice:
 _For best experience, please use pip3_
+
+`python3 -m venv [path/to/virtualenv]`
+
+Then activate the virtual environment before running the install scripts below:
 
 #### MacOS example:
 
@@ -28,13 +32,14 @@ _For best experience, please use pip3_
 
 ## Start the local servers
 
+After installing the required packages (`npm install` and `pip3 install -r requirements.txt`) return to the imagesaver2 directory
 _Must `cd ..` back into imagesaver2 directory before running npm scripts_
 
 Start the backend:
 
 `npm run start-api`
 
-In a new terminal, start the frontend:
+Open a new terminal go into the imagesaver2 directory, start the frontend:
 
 `npm start`
 
@@ -61,3 +66,5 @@ Some example websites used to test:
 - Moved inline styling out of the MUI5 and into the `gallery.css` for the Gallery component. the `SX` prop is recommended for overwriting css styling in the new MUIv5. This type of styling would be very efficient with functional components that require their own styling override from the default styled theme.
 
 - `Downloads` folder and `downloads.txt` log file has been added to `.gitignore`. These files have been pushed not knowing that they should be ignored.
+
+- Add a URL validator on the frontend to validate URL and add shortcut urls without the http:// or https:// (www.google.com)
