@@ -1,10 +1,12 @@
 import React from "react";
-import Form from "./components/Form";
+import NavBar from "./components/NavBar";
+import Gallery from "./components/Gallery";
 
 const App = () => {
   return (
     <div>
-      <Form />
+      <NavBar />
+      <Gallery />
     </div>
   );
 };
