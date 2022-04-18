@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, AppBar, Toolbar, Typography } from "@mui/material";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
