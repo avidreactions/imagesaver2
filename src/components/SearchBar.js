@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 const SearchBar = (props) => {
-  const { setImageUrls, setSeverity, setOpen } = props;
+  const { setImageUrls, setSeverity, setOpenSnackBar } = props;
 
   const [urlInput, setUrlInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,12 +26,12 @@ const SearchBar = (props) => {
       .then((data) => {
         setImageUrls(data.data);
         setSeverity("success");
-        setOpen(true);
+        setOpenSnackBar(true);
         setLoading(false);
       })
       .catch((error) => {
         setSeverity("error");
-        setOpen(true);
+        setOpenSnackBar(true);
         setLoading(false);
       });
   };
