@@ -2,6 +2,13 @@ import os
 import shutil
 import requests
 from bs4 import *
+from urllib.parse import urlparse
+from os.path import splitext
+
+def get_ext(url):
+  parsed = urlparse(url)
+  root, ext = splitext(parsed.path)
+  return ext
 
 def download_images(images, folder_path):
   count = 0;
@@ -10,10 +17,11 @@ def download_images(images, folder_path):
 
   if len(images) != 0:
     for i, image in enumerate(images):
-
       try:
         image_link = image["src"]
-
+        ext = get_ext(image["src"])
+        if len(ext) == 0:
+          ext = ".jpg"
       except:
         pass
 
@@ -24,7 +32,7 @@ def download_images(images, folder_path):
           request = str(request, 'utf-8');
 
         except UnicodeDecodeError:
-          with open(f"{folder_path}/images{i+1}.jpg", "wb+") as f:
+          with open(f"{folder_path}/images{i+1}{ext}", "wb+") as f:
             f.write(request);
           with open("downloaded.txt", "a") as w:
             w.write(image_link + "\n");
@@ -40,7 +48,6 @@ def download_images(images, folder_path):
 
     else:
       print(f"Total {count} images downloaded out of {len(images)}");
-
     return image_list;
 
 def grab_images(url):
