@@ -1,7 +1,6 @@
-from flask import Flask;
+from flask import Flask
 from blueprint import imagesaver_post
-import requests;
-import json;
+
 
 def test_post_route_success():
   app = Flask(__name__);

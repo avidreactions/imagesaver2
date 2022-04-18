@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Snackbar, Grid, Modal, Fade } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import SearchBar from "./SearchBar";
-import "../styling/gallery.css";
+import "../stylings/gallery.css";
 
 const AlertMessage = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
