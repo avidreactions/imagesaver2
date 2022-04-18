@@ -66,9 +66,11 @@ const Gallery = () => {
         )}
       </Grid>
       <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={openSnackBar}
         autoHideDuration={6000}
         onClose={handleClose}
+        key="top center"
       >
         <AlertMessage
           onClose={handleClose}
