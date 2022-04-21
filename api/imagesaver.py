@@ -13,7 +13,7 @@ def get_ext(url):
 def download_images(images, folder_path):
   count = 0
   image_list = []
-  respObj = dict()
+
   print(f"total {len(images)} have been found!")
 
   if len(images) != 0:
