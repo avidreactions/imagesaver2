@@ -59,12 +59,21 @@ Some example websites used to test:
 
 - `.flaskenv` would normally be pushed up as a template with easy to fill in keys and passwords. It has been pushed to git to keep things simple. This would not be viewable / pushed to github normally.
 
-- Detailed error handling by the server would help with understanding the reasons why an image maybe missing or unable to download. Currently the errorhandling only shows success and one error. I wasn't sure how to approach this one with the limited time given.
+- ~~Detailed error handling by the server would help with understanding the reasons why an image maybe missing or unable to download. Currently the errorhandling only shows success and one error. I wasn't sure how to approach this one with the limited time given.~~
 
-- Need to add Black for python linting. The frontend has prettier linting that would need some extra configurations to match current syntactical standards and practices.
+- [ ] Add the detailed logging to the log
+- [ ] Need to add Black for python linting. The frontend has prettier linting that would need some extra configurations to match current syntactical standards and practices.
 
 - Moved inline styling out of the MUI5 and into the `gallery.css` for the Gallery component. the `SX` prop is recommended for overwriting css styling in the new MUIv5. This type of styling would be very efficient with functional components that require their own styling override from the default styled theme.
 
 - `Downloads` folder and `downloads.txt` log file has been added to `.gitignore`. These files have been pushed not knowing that they should be ignored.
 
-- Add a URL validator on the frontend to validate URL and add shortcut urls without the http:// or https:// (www.google.com)
+- [ ] Add a URL validator on the frontend to validate URL and add shortcut urls without the http:// or https:// (www.google.com)
+
+Update:
+Exception has been added show why some images were not downloaded
+
+![image](https://user-images.githubusercontent.com/85916265/164385365-7c36ca66-2fce-4a5a-9b48-671c824708a8.png)
+
+
+
