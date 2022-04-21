@@ -13,6 +13,7 @@ def get_ext(url):
 def download_images(images, folder_path):
   count = 0
   image_list = []
+  respObj = dict()
   print(f"total {len(images)} have been found!")
 
   if len(images) != 0:
@@ -32,8 +33,10 @@ def download_images(images, folder_path):
         image_list.append(image_link)
 
         count += 1
-      except:
-        pass
+      except requests.exceptions.RequestException as err:
+        print("*****************************", err)
+
+
     if count == len(images):
       print("All images have been downloaded!")
 
