@@ -15,7 +15,7 @@ const SearchBar = (props) => {
   const handleClick = async () => {
     const postObj = { url: urlInput };
     setLoading(true);
-    fetch("http://127.0.0.1:5000/imagesaver", {
+    await fetch("http://127.0.0.1:5000/imagesaver", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,6 +30,7 @@ const SearchBar = (props) => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log("Error: ", error);
         setSeverity("error");
         setOpenSnackBar(true);
         setLoading(false);
