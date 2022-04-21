@@ -1,9 +1,11 @@
 import os
 import shutil
+from os.path import splitext
+from urllib.parse import urlparse
+
 import requests
 from bs4 import *
-from urllib.parse import urlparse
-from os.path import splitext
+
 
 def get_ext(url):
   parsed = urlparse(url)
