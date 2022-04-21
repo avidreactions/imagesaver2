@@ -1,7 +1,8 @@
-from flask import Blueprint, request, render_template
-from imagesaver import grab_images
-from flask_cors import CORS
 import validators
+from flask import Blueprint, render_template, request
+from flask_cors import CORS
+
+from imagesaver import grab_images
 
 imagesaver_post = Blueprint("imagesaver_bp", __name__)
 
